@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<h3>Cars</h3>
-{% for car in cars %}
+<h3>Details</h3>
 <div class="card">
   <div class="card-content">
     <p>Make: {{car.make}}</p>
@@ -8,8 +7,6 @@
     <p>Year: {{car.year}}</p>
     <p>Color: {{car.color}}</p>
     <p>Description: {{car.description}}</p>
-    <a href="{% url 'detail' car.id %}"><button>Click For Details</button></a>
   </div>
 </div>
-
-{% endfor %} {% endblock %}
+{% endblock %}

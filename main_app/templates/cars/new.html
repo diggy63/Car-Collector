@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Enter a New Car</h1>
+<div class="row">
+    <form class="col s12" action="/cars" method="POST">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="car_make" type="text" name="car_make" class="validate">
+          <label class="active" for="car_make">Car Make</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="car_model" type="text" class="validate" name="car_model">
+          <label class="active" for="car_model">Car Model</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="car_year" type="text" name="car_year" class="validate">
+          <label class="active" for="car_year">Car Year</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="car_color" type="text" class="validate" name="car_color">
+          <label class="active" for="car_color">Car Color</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+            <textarea id="description" name="description" class="materialize-textarea"></textarea>
+          <label class="active" for="description">Description</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
+{% endblock %}
