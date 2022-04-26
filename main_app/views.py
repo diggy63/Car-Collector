@@ -1,8 +1,9 @@
 from dataclasses import field
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Car
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import OilchangeForm
 # Create your views here.
 
 class CarCreate(CreateView):
@@ -28,7 +29,17 @@ def cars_index(request):
 
 def cars_detail(request, car_id):
     car = Car.objects.get(id=car_id)
-    return render(request, 'cars/detail.html', {'car' : car})
+    oil_form = OilchangeForm()
+    return render(request, 'cars/detail.html', {'car' : car, 'oil_form': oil_form})
+
+def add_oilchange(request, car_id):
+    form = OilchangeForm(request.POST)
+    if form.is_valid():
+        new_oilchange = form.save(commit=False)
+        new_oilchange.car_id = car_id
+        new_oilchange.save()
+    return redirect('detail', car_id=car_id)
+
 
 def cars_new(request):
     return render(request, 'cars/new.html')
