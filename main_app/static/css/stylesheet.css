@@ -1,15 +1,19 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    background-color: rgb(229, 229, 229);
-  }
-  
-  main {
-    flex: 1 0 auto;
-  }
-  
-  footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: rgb(229, 229, 229);
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer.page-footer {
+  padding-top: 0;
+  text-align: right;
+}
+
+.btn:hover {
+  background-color: rgb(255, 253, 253);
+}

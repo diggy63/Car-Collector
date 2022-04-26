@@ -8,5 +8,11 @@
     <p>Color: {{car.color}}</p>
     <p>Description: {{car.description}}</p>
   </div>
+  <div class="card-action">
+    <a href="{% url 'cars_update' car.id %}"><button class="btn grey darken-3">Edit
+    </button></a>
+    <a href="{% url 'cars_delete' car.id %}"><button class="btn grey darken-3">Delete
+    </button></a>
+  </div>
 </div>
 {% endblock %}
