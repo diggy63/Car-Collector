@@ -33,6 +33,10 @@ def cars_detail(request, car_id):
     return render(request, 'cars/detail.html', {'car' : car, 'oil_form': oil_form})
 
 def add_oilchange(request, car_id):
+    print(request.POST['miles'])
+    car = Car.objects.get(id=car_id)
+    car.miles = request.POST['miles']
+    car.save()
     form = OilchangeForm(request.POST)
     if form.is_valid():
         new_oilchange = form.save(commit=False)

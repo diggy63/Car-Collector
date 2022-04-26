@@ -24,6 +24,7 @@ OILTYPES = (
 
 class Oilchange(models.Model):
     date = models.DateField()
+    miles = models.IntegerField(default=0)
     oiltype = models.CharField(
       max_length=2,
       choices=OILTYPES,
