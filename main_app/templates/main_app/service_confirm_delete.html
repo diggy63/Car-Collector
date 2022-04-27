@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Delete Car</h1>
+
+  <h4>Are you sure you want to delete <span class="blue-text text-darken-2"> <br>{{ object.name}}</span>?</h4>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <button class="btn grey darken-3" type="submit" name="action">Submit
+      </button>
+    <a href="{% url 'services_detail' service.id %}"><button class="btn grey darken-3">Cancel
+    </button></a>
+  </form>
+{% endblock %}

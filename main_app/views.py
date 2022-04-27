@@ -1,9 +1,10 @@
 from dataclasses import field
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import Car
+from .models import Car, Service
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import OilchangeForm
+from django.views.generic import ListView, DetailView
 # Create your views here.
 
 class CarCreate(CreateView):
@@ -48,3 +49,31 @@ def add_oilchange(request, car_id):
 
 def cars_new(request):
     return render(request, 'cars/new.html')
+
+def assoc_service(request, cat_id, service_id):
+  # Note that you can pass a toy's id instead of the whole object
+  Car.objects.get(id=car_id).services.add(service_id)
+  return redirect('detail', car_id=car_id)
+
+def deassoc_service(request, car_id, service_id):
+  # Note that you can pass a toy's id instead of the whole object
+  Car.objects.get(id=car_id).services.remove(service_id)
+  return redirect('detail', car_id=car_id)
+
+class ServiceList(ListView):
+    model = Service
+
+class ServiceCreate(CreateView):
+    model = Service
+    fields = '__all__'
+
+class ServiceDetail(DetailView):
+    model = Service
+
+class ServiceUpdate(UpdateView):
+    model = Service
+    fields = '__all__'
+
+class ServiceDelete(DeleteView):
+    model = Service
+    success_url = '/services/'

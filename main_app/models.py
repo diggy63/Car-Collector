@@ -3,6 +3,18 @@ from django.urls import reverse
 
 # Create your models here.
 
+class Service(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
+    price = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('services_detail', kwargs={'pk': self.pk})
+
+
 class Car(models.Model):
     make = models.CharField(max_length=100)
     car_model = models.CharField(max_length=100, default= 'N/A')
@@ -11,6 +23,7 @@ class Car(models.Model):
     miles = models.IntegerField(default=0)
     description = models.TextField(max_length=250, default='N/A')
     lastOilChange = models.IntegerField(default=0)
+    services = models.ManyToManyField(Service)
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'car_id': self.id})
