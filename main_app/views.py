@@ -36,6 +36,7 @@ def add_oilchange(request, car_id):
     print(request.POST['miles'])
     car = Car.objects.get(id=car_id)
     car.miles = request.POST['miles']
+    car.lastOilChange = request.POST['miles']
     car.save()
     form = OilchangeForm(request.POST)
     if form.is_valid():

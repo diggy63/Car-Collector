@@ -26,6 +26,7 @@
       {% csrf_token %}{{oil_form.as_p}}
       <button input="submit" class="btn grey darken-3">Add Oil Change</button>
     </form>
+      <div class="card-panel teal-text center-align">{{car.miles_until_oil}} until oil change</div>
     <table class="striped">
       <thead>
         <tr>

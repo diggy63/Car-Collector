@@ -10,9 +10,13 @@ class Car(models.Model):
     color = models.CharField(max_length=100, default= 'N/A')
     miles = models.IntegerField(default=0)
     description = models.TextField(max_length=250, default='N/A')
+    lastOilChange = models.IntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'car_id': self.id})
+
+    def miles_until_oil(self):
+        return  (6000 + self.lastOilChange) - self.miles
 
 OILTYPES = (
     ('FS', 'Full Synthectic'),
